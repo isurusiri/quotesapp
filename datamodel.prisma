@@ -1,0 +1,15 @@
+type User {
+  id: ID! @id
+  email: String @unique
+  name: String!
+  quotes: [Quote!]!
+}
+
+type Quote {
+  id: ID! @id
+  text: String!
+  published: Boolean! @default(value: true)
+  saidBy: String! @default(value: "Unknown")
+  hearts: Int! @default(value: 0)
+  author: User @relation(link: INLINE)
+}

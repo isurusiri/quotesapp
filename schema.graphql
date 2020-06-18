@@ -1,0 +1,29 @@
+type Query {
+  publishedQuotes: [Quote!]!
+  quotes: [Quote]!
+  quote(quoteId: ID!): Quote
+  quotesByUser(userId: ID!): [Quote!]!
+  quotesByPerson(personName: String): [Quote!]!
+}
+
+type Mutation {
+  createUser(name: String!): User
+  createQuote(text: String!, userId: ID!, saidBy: String!): Quote
+  heartAQuote(quoteId: ID!): Quote
+}
+
+type User {
+  id: ID!
+  email: String
+  name: String!
+  quotes: [Quote!]!
+}
+
+type Quote {
+  id: ID!
+  text: String!
+  published: Boolean!
+  saidBy: String!
+  hearts: Int!
+  author: User
+}
